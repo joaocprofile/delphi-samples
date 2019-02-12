@@ -1,0 +1,1 @@
+Exemplos de pool de thread usando Tasks e TThread
