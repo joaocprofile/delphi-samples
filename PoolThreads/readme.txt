@@ -1,1 +1,1 @@
-Exemplos de pool de thread usando Tasks e TThread
+Thread pool examples using Tasks and TThread
