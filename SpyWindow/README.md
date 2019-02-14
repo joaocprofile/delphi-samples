@@ -1,1 +1,1 @@
-﻿Example of how to capture the title of the open windows within Task.
+﻿Example of how to capture the title of the open windows within Task
