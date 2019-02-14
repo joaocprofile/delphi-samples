@@ -1,0 +1,35 @@
+object Main_Form: TMain_Form
+  Left = 0
+  Top = 0
+  Caption = 'Spy Access'
+  ClientHeight = 303
+  ClientWidth = 567
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object TrayIcon: TTrayIcon
+    Animate = True
+    Hint = 'Spy Access'
+    BalloonHint = 'Spy Access'
+    PopupMenu = PopupMenu
+    Visible = True
+    Left = 16
+    Top = 24
+  end
+  object PopupMenu: TPopupMenu
+    Left = 72
+    Top = 24
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object Exit1: TMenuItem
+      Caption = 'Exit'
+    end
+  end
+end

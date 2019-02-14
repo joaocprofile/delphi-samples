@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018/10/09 12:49:09.000.014,=C:\Users\root\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2019/02/13 17:21:00.000.440,=C:\Users\root\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2019/02/14 10:27:26.737,=C:\Users\root\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2019/02/14 12:04:26.595,D:\delphi-samples\SpyAccess\Main.Form.pas=C:\Users\root\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2019/02/14 12:04:26.595,D:\delphi-samples\SpyAccess\Main.Form.dfm=C:\Users\root\Documents\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
+    <Transaction>2019/02/14 12:05:06.693,D:\delphi-samples\SpyAccess\Spyaccess.dproj=C:\Users\root\Documents\Embarcadero\Studio\Projects\Project2.dproj</Transaction>
+    <Transaction>2019/02/14 14:16:01.555,D:\delphi-samples\SpyAccess\SpyWindow.dproj=D:\delphi-samples\SpyAccess\Spyaccess.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
