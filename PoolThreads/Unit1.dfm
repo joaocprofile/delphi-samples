@@ -29,7 +29,7 @@ object Form1: TForm1
     TabOrder = 0
     OnClick = Button1Click
   end
-  object lst_MailsRead: TListView
+  object lst_Threads: TListView
     AlignWithMargins = True
     Left = 3
     Top = 47

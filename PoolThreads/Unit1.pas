@@ -3,13 +3,13 @@ unit Unit1;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ComCtrls,
 
-  System.Threading, Vcl.ComCtrls;
+  System.Threading;
 
 type
-  TThreadMailsRead = class(TThread)
+  TMainThread = class(TThread)
   private
     _Form: TForm;
     _Id: Integer;
@@ -25,7 +25,7 @@ type
 
   TForm1 = class(TForm)
     Button1: TButton;
-    lst_MailsRead: TListView;
+    lst_Threads: TListView;
     Button2: TButton;
     Label1: TLabel;
     procedure Button1Click(Sender: TObject);
@@ -34,7 +34,7 @@ type
     { Private declarations }
     FCanceled: Boolean;
   public
-    ArrayThreads: Array of TThreadMailsRead;
+    ArrayThreads: Array of TMainThread;
 
     function isCanceled: boolean;
     procedure UpdateList(AItem, AStatus: String);
@@ -47,7 +47,7 @@ implementation
 
 {$R *.dfm}
 
-{ TThreadMailsRead }
+{ TMainThread }
 
 function FindListViewItem(lv: TListView; const S: string; column: Integer): TListItem;
 var
@@ -77,27 +77,27 @@ procedure TForm1.UpdateList(AItem, AStatus: String);
 Var
   lvItem: TListItem;
  begin
-  lvItem := FindListViewItem(lst_MailsRead, AItem, 0);
+  lvItem := FindListViewItem(lst_Threads, AItem, 0);
   if lvItem = nil then
   begin
-    lst_MailsRead.Items.BeginUpdate;
+    lst_Threads.Items.BeginUpdate;
     try
-      lvItem := lst_MailsRead.Items.Add;
+      lvItem := lst_Threads.Items.Add;
       lvItem.Caption := AItem;
       lvItem.SubItems.Add(AStatus);
     finally
-      lst_MailsRead.Items.EndUpdate;
+      lst_Threads.Items.EndUpdate;
     end;
   end
   else
   begin
     lvItem.SubItems[0] := AStatus;
   end;
-//  lst_MailsRead.Selected := lvItem;
+//  lst_Threads.Selected := lvItem;
 //  lvItem.MakeVisible(True);
 end;
 
-constructor TThreadMailsRead.Create(AForm: TForm; AId: Integer);
+constructor TMainThread.Create(AForm: TForm; AId: Integer);
 begin
   inherited Create(false);
   FreeOnTerminate := true;
@@ -106,13 +106,13 @@ begin
   _countLoop := 0;
 end;
 
-destructor TThreadMailsRead.Destroy;
+destructor TMainThread.Destroy;
 begin
 
   inherited;
 end;
 
-procedure TThreadMailsRead.EndCheck;
+procedure TMainThread.EndCheck;
 var
   lForm : TForm1;
   countLoop: integer;
@@ -121,7 +121,7 @@ begin
   lForm.UpdateList(_Id.ToString, 'Update thread '+_countLoop.ToString);
 end;
 
-procedure TThreadMailsRead.Canceled;
+procedure TMainThread.Canceled;
 var
   lForm : TForm1;
   countLoop: integer;
@@ -130,7 +130,7 @@ begin
   lForm.UpdateList(_Id.ToString, 'Canceled in ' + FormatDateTime('hh:mm:ss', now));
 end;
 
-procedure TThreadMailsRead.Execute;
+procedure TMainThread.Execute;
 var
   lForm : TForm1;
 begin
@@ -173,7 +173,7 @@ begin
         for I := 1 to 20 do
         begin
           SetLength(ArrayThreads, Length(ArrayThreads) + 1);
-          ArrayThreads[High(ArrayThreads)] := TThreadMailsRead.Create(self, i);
+          ArrayThreads[High(ArrayThreads)] := TMainThread.Create(self, i);
 
           sleep(200);
           TThread.Queue(nil,
